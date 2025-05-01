@@ -1,8 +1,7 @@
 package com.season.controllers;
 import com.season.entities.User;
-import com.season.services.JwtService;
+import com.season.jwt.JwtService;
 import com.season.services.UserService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -14,7 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api/auth")
 
 public class AuthController {
     @Autowired
@@ -27,7 +26,7 @@ public class AuthController {
     @PostMapping("/signup")
     public ResponseEntity<Map<String, Object>> signup(@RequestBody User user) {
         User savedUser = userService.signup(user);
-        String token = jwtService.generateToken(user.getUsername());
+        String token = jwtService.generateToken(user.getUsername(),user.getId(), user.getRole());
         Map<String, Object> response = new HashMap<>();
         response.put("id", savedUser.getId());
         response.put("username", savedUser.getUsername());
@@ -43,7 +42,7 @@ public class AuthController {
                 new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword())
         );
         User authenticatedUser = (User) authentication.getPrincipal();
-        String token = jwtService.generateToken(user.getUsername());
+        String token = jwtService.generateToken(user.getUsername(),user.getId(), user.getRole());
         Map<String, Object> response = new HashMap<>();
         response.put("id", authenticatedUser.getId());
         response.put("username", authenticatedUser.getUsername());
