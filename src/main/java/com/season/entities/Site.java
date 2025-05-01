@@ -37,8 +37,7 @@ public class Site {
     @JoinColumn(name = "theme_id")
     private Theme theme;
 
-    @OneToMany(mappedBy = "site", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Page> pages;
+
 
     @PrePersist
     protected void onCreate() {
@@ -107,13 +106,6 @@ public class Site {
         this.theme = theme;
     }
 
-    public List<Page> getPages() {
-        return pages;
-    }
-
-    public void setPages(List<Page> pages) {
-        this.pages = pages;
-    }
 
     public Boolean getIsPublished() {
         return isPublished;

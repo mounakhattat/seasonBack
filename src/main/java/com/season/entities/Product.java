@@ -20,6 +20,8 @@ public class Product implements Serializable {
 
     @Column(unique = true, nullable = false)
     private String username;
+    @ManyToOne
+    private Categories categories;
 
     public Long getId() {
         return id;
