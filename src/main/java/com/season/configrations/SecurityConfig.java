@@ -48,7 +48,7 @@ public class SecurityConfig implements WebMvcConfigurer {
     }
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/ws").allowedOrigins("http://localhost:4200");
+        registry.addMapping("/ws").allowedOrigins("http://localhost:4200", "http://projet-1-tn.surge.sh/","https://projet-1-tn.surge.sh/");
     }
 
 }
