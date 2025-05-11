@@ -29,9 +29,5 @@ public class ThemeController {
         return ResponseEntity.ok(themes);
     }
 
-    @GetMapping("/default")
-    public ResponseEntity<Theme> getDefaultTheme() {
-        Theme defaultTheme = themeService.getDefaultTheme();
-        return ResponseEntity.ok(defaultTheme);
-    }
+
 }

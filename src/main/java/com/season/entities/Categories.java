@@ -17,8 +17,8 @@ public class Categories implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "categories")
-    private List<Product> products;
+    @ManyToOne
+    private Produits produits;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "categories")
     private List<SousCategories> sousCategories;
 }

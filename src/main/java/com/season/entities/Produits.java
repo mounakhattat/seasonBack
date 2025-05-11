@@ -5,21 +5,27 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
-@Table(name = "product")
+@Table(name = "produits")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Product implements Serializable {
+public class Produits implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(unique = true, nullable = false)
-    private String username;
+    private String nom;
+    private String sku;
+    private String slug;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "produits")
+    private List<Categories> categories;
     @ManyToOne
-    private Categories categories;
+    private Boutique boutique;
+
 
     public Long getId() {
         return id;
@@ -29,11 +35,11 @@ public class Product implements Serializable {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getNom() {
+        return nom;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 }

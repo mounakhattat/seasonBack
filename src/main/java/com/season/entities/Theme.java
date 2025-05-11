@@ -21,12 +21,9 @@ public class Theme {
     @Column(columnDefinition = "TEXT")
     private String styles;
 
-    @Column(name = "is_default")
-    private Boolean isDefault = false;
-
     @JsonIgnore
     @OneToMany(mappedBy = "theme", cascade = CascadeType.ALL)
-    private List<Site> sites;
+    private List<Boutique> boutiques;
 
     public Long getId() {
         return id;
@@ -52,19 +49,13 @@ public class Theme {
         this.styles = styles;
     }
 
-    public Boolean getDefault() {
-        return isDefault;
+
+
+    public List<Boutique> getBoutiques() {
+        return boutiques;
     }
 
-    public void setDefault(Boolean aDefault) {
-        isDefault = aDefault;
-    }
-
-    public List<Site> getSites() {
-        return sites;
-    }
-
-    public void setSites(List<Site> sites) {
-        this.sites = sites;
+    public void setBoutiques(List<Boutique> boutiques) {
+        this.boutiques = boutiques;
     }
 }

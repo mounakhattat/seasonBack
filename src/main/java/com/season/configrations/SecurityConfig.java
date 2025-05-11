@@ -35,8 +35,8 @@ public class SecurityConfig implements WebMvcConfigurer {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth/**").permitAll()
 
-                        .requestMatchers("/api/themes/**").authenticated()
-                        .requestMatchers("/api/sites/**", "/api/pages/**", "/api/components/**").authenticated()
+                        .requestMatchers("/api/themes/**").permitAll()
+                        .requestMatchers("/boutiques/**", "/api/pages/**", "/api/components/**").authenticated()
 
                         .anyRequest().authenticated()
                 )
@@ -54,7 +54,7 @@ public class SecurityConfig implements WebMvcConfigurer {
         registry.addMapping("/**")
 
                 .allowedOrigins(
-                        "http://localhost:4200",  "http://projet-1-tn.surge.sh/","https://projet-1-tn.surge.sh/"    
+                        "http://localhost:4200",  "http://projet-1-tn.surge.sh","https://projet-1-tn.surge.sh"
                         )
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
         ;

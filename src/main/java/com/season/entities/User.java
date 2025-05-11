@@ -37,7 +37,7 @@ public class User implements UserDetails {
     private Role role = Role.SELLER;
     @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Site> sites;
+    private List<Boutique> boutiques;
 
 
 
@@ -105,12 +105,12 @@ public class User implements UserDetails {
         this.email = email;
     }
 
-    public List<Site> getSites() {
-        return sites;
+    public List<Boutique> getBoutiques() {
+        return boutiques;
     }
 
-    public void setSites(List<Site> sites) {
-        this.sites = sites;
+    public void setBoutiques(List<Boutique> boutiques) {
+        this.boutiques = boutiques;
     }
 
 

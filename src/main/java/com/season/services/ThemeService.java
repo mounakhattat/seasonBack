@@ -25,9 +25,5 @@ public class ThemeService implements IThemeService {
         return themeRepository.findAll();
     }
 
-    @Override
-    public Theme getDefaultTheme() {
-        return themeRepository.findByIsDefaultTrue()
-                .orElseThrow(() -> new IllegalArgumentException("No default theme found"));
-    }
+
 }
