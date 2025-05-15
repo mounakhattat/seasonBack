@@ -1,6 +1,5 @@
 package com.season.entities;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.season.enumerations.Role;
 import jakarta.persistence.*;
@@ -20,8 +19,8 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
 public class User implements UserDetails {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -35,15 +34,21 @@ public class User implements UserDetails {
     private String email;
     @Enumerated(EnumType.STRING)
     private Role role = Role.SELLER;
+
+<<<<<<< HEAD
     @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Boutique> boutiques;
+=======
 
-
+    @JsonIgnore
+    @OneToMany(mappedBy = "user")
+>>>>>>> 4928aa1bce3501c8a93e65ca2ef489b110be779b
+    private List<Store> stores;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + role.name()));    }
+        return Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + role.name()));
+    }
 
     @Override
     public boolean isAccountNonExpired() {
@@ -67,14 +72,6 @@ public class User implements UserDetails {
 
     public Long getId() {
         return id;
-    }
-
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
     }
 
     public void setId(Long id) {
@@ -105,15 +102,25 @@ public class User implements UserDetails {
         this.email = email;
     }
 
-    public List<Boutique> getBoutiques() {
-        return boutiques;
+<<<<<<< HEAD
+
+=======
+>>>>>>> 4928aa1bce3501c8a93e65ca2ef489b110be779b
+
+    public List<Store> getStores() {
+        return stores;
     }
 
-    public void setBoutiques(List<Boutique> boutiques) {
-        this.boutiques = boutiques;
+    public void setStores(List<Store> stores) {
+        this.stores = stores;
     }
 
+    public Role getRole() {
+        return role;
+    }
 
-
-
+    public void setRole(Role role) {
+        this.role = role;
+    }
 }
+

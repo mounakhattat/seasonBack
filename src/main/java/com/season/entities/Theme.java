@@ -1,61 +1,54 @@
 package com.season.entities;
 
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.Data;
-
-import java.util.List;
 
 @Entity
-@Table(name = "themes")
-@Data
 public class Theme {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
     private String name;
+    private String previewImage;
+    private boolean active = false;
+    private String primaryColor;
+    private String fontFamily;
+    private String type;
+    private boolean isDefault = false;
+    private String previewBannerImage;
+    private String previewLogoImage;
+    @Column(name = "is_custom")
+    private boolean  isCustom;
 
-    @Column(columnDefinition = "TEXT")
-    private String styles;
+    // Getters et Setters
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "theme", cascade = CascadeType.ALL)
-    private List<Boutique> boutiques;
-
-    public Long getId() {
-        return id;
+    public boolean getIsCustom() {
+        return isCustom;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIsCustom(boolean custom) {
+        isCustom = custom;
     }
 
-    public String getName() {
-        return name;
-    }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+    public String getPreviewImage() { return previewImage; }
+    public void setPreviewImage(String previewImage) { this.previewImage = previewImage; }
+    public boolean isActive() { return active; }
+    public void setActive(boolean active) { this.active = active; }
+    public String getPrimaryColor() { return primaryColor; }
+    public void setPrimaryColor(String primaryColor) { this.primaryColor = primaryColor; }
+    public String getFontFamily() { return fontFamily; }
+    public void setFontFamily(String fontFamily) { this.fontFamily = fontFamily; }
+    public String getType() { return type; }
+    public void setType(String type) { this.type = type; }
+    public boolean isDefault() { return isDefault; }
+    public void setDefault(boolean isDefault) { this.isDefault = isDefault; }
+    public String getPreviewBannerImage() { return previewBannerImage; }
+    public void setPreviewBannerImage(String previewBannerImage) { this.previewBannerImage = previewBannerImage; }
+    public String getPreviewLogoImage() { return previewLogoImage; }
+    public void setPreviewLogoImage(String previewLogoImage) { this.previewLogoImage = previewLogoImage; }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getStyles() {
-        return styles;
-    }
-
-    public void setStyles(String styles) {
-        this.styles = styles;
-    }
-
-
-
-    public List<Boutique> getBoutiques() {
-        return boutiques;
-    }
-
-    public void setBoutiques(List<Boutique> boutiques) {
-        this.boutiques = boutiques;
-    }
 }

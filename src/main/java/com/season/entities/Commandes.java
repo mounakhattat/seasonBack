@@ -10,9 +10,13 @@ public class Commandes {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+<<<<<<< HEAD
     @ManyToOne
-    @JoinColumn(name = "boutique_id")
-    private Boutique boutique;
+    @JoinColumn(name = "store_id")
+    private Store store;
+=======
+
+>>>>>>> 4928aa1bce3501c8a93e65ca2ef489b110be779b
 
     @ManyToMany
     @JoinTable(
@@ -30,14 +34,17 @@ public class Commandes {
         this.id = id;
     }
 
-    public Boutique getBoutique() {
-        return boutique;
+<<<<<<< HEAD
+    public Store getStore() {
+        return store;
     }
 
-    public void setBoutique(Boutique boutique) {
-        this.boutique = boutique;
+    public void setStore(Store store) {
+        this.store = store;
     }
 
+=======
+>>>>>>> 4928aa1bce3501c8a93e65ca2ef489b110be779b
     public List<Produits> getProduits() {
         return produits;
     }
@@ -45,4 +52,5 @@ public class Commandes {
     public void setProduits(List<Produits> produits) {
         this.produits = produits;
     }
+
 }

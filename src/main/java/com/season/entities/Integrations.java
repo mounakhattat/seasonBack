@@ -1,4 +1,5 @@
 package com.season.entities;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -11,9 +12,13 @@ public class Integrations {
     private String pixel_tiktok;
     private String nomDomaine;
 
+<<<<<<< HEAD
     @OneToOne(mappedBy = "integrations")
-    @JoinColumn(name = "boutique_id")
-    private Boutique boutique;
+    @JsonIgnore
+    @JoinColumn(name = "store_id")
+    private Store store;
+=======
+>>>>>>> 4928aa1bce3501c8a93e65ca2ef489b110be779b
 
     public Long getId() {
         return id;
@@ -39,13 +44,16 @@ public class Integrations {
         this.nomDomaine = nomDomaine;
     }
 
-    public Boutique getBoutique() {
-        return boutique;
+<<<<<<< HEAD
+    public Store getStore() {
+        return store;
     }
 
-    public void setBoutique(Boutique boutique) {
-        this.boutique = boutique;
+    public void setStore(Store boutique) {
+        this.store= boutique;
     }
+=======
+>>>>>>> 4928aa1bce3501c8a93e65ca2ef489b110be779b
 
     public String getPixel_tiktok() {
         return pixel_tiktok;
@@ -54,4 +62,5 @@ public class Integrations {
     public void setPixel_tiktok(String pixel_tiktok) {
         this.pixel_tiktok = pixel_tiktok;
     }
+
 }

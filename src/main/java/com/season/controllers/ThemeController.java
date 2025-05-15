@@ -1,6 +1,7 @@
 package com.season.controllers;
 
 import com.season.entities.Theme;
+import com.season.repositories.ThemeRepository;
 import com.season.services.ThemeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,20 +15,12 @@ import java.util.List;
 @RequiredArgsConstructor
 
 public class ThemeController {
+
     @Autowired
-     ThemeService themeService;
-
-    @PostMapping
-    public ResponseEntity<Theme> createTheme(@RequestBody Theme theme) {
-        Theme createdTheme = themeService.createTheme(theme);
-        return ResponseEntity.ok(createdTheme);
-    }
-
+    private ThemeRepository themeRepository;
     @GetMapping
-    public ResponseEntity<List<Theme>> getAllThemes() {
-        List<Theme> themes = themeService.getAllThemes();
-        return ResponseEntity.ok(themes);
+    public List<Theme> getAllThemes() {
+        return themeRepository.findAll();
     }
-
 
 }
